@@ -9,7 +9,13 @@ RSpec.describe UserGame, type: :model do
   	it { should have_db_index(:game_id) }
 
   	it "user_game is ok"do
-  		usergame=FactoryGirl.build(:user_game)
+      user=FactoryGirl.create(:user, name: 'joj1')
+      game=FactoryGirl.create(:game, name: 'joj2')
+      puts(user.name)
+  		usergame=FactoryGirl.build(:user_game, user: user, game: game)
+      puts(usergame.user_id)
+      puts(usergame.game_id)
+      puts("------------")
   		expect(usergame.save).to eq(true)
   	end
   	it "doesn't have a user id" do

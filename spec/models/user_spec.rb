@@ -35,6 +35,11 @@ RSpec.describe User, type: :model do
   	end
   	it{should have_many (:games)}
     it{should have_many (:user_games)}
+    it "prueba de union" do
+      user=FactoryGirl.build(:halo_has_user)
+      expect(user.save).to eq(true)
+      puts(user.name)
+    end
 
   end
 

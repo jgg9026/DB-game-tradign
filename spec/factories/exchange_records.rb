@@ -7,6 +7,5 @@ FactoryGirl.define do
 	factory :no_user_game_id do
 		user_game_id nil
 	end
-
   end
 end

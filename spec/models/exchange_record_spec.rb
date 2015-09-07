@@ -24,6 +24,8 @@ RSpec.describe ExchangeRecord, type: :model do
 
   	it{should belong_to :user_game}
   	it{should belong_to :exchange}
+  	it { should have_db_index(:user_game_id) }
+  	it { should have_db_index(:exchange_id) }
 
   end
 end

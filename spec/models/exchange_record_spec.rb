@@ -22,5 +22,8 @@ RSpec.describe ExchangeRecord, type: :model do
   		expect(exchangerecord.save).to eq(false)
   	end
 
+  	it{should belong_to :user_game}
+  	it{should belong_to :exchange}
+
   end
 end

@@ -20,14 +20,14 @@ ActiveRecord::Schema.define(version: 20150907080103) do
   end
 
   create_table "categorizations", force: :cascade do |t|
-    t.integer  "categories_id"
-    t.integer  "games_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "category_id"
+    t.integer  "game_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "categorizations", ["categories_id"], name: "index_categorizations_on_categories_id"
-  add_index "categorizations", ["games_id"], name: "index_categorizations_on_games_id"
+  add_index "categorizations", ["category_id"], name: "index_categorizations_on_category_id"
+  add_index "categorizations", ["game_id"], name: "index_categorizations_on_game_id"
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"

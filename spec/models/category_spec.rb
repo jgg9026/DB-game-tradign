@@ -11,5 +11,6 @@ RSpec.describe Category, type: :model do
 			category2=FactoryGirl.build(:category)
 			expect(category2.save).to eq(false)
 		end
+		it {should validate_presence_of :name}
 	end
 end

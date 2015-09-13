@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Categorization, type: :model do
+	let(:categorization) {FactoryGirl.build(:categorization)}
 	context "Testing join table categorizations" do
-		it "it is ok" do
-			categorization=FactoryGirl.build(:categorization)
+		it "is ok" do
 			expect(categorization.save).to eq(true)
 		end
-		it ", it doesn't have category_id" do
-			categorization=FactoryGirl.build(:no_category_id)
+		it "doesn't have category_id" do
+			categorization.category_id=nil
 			expect(categorization.save).to eq(false)
 		end
 		it { should have_db_index(:category_id) }

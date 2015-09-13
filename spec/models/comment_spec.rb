@@ -1,21 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
+  let(:comment) {FactoryGirl.build(:comment)}
   context "testing comment model" do
-  	it "Comment row is ok" do
-	  	comment=FactoryGirl.build(:comment)
+  	it "is ok" do
 	  	expect(comment.save).to eq(true)
     end
     it "doesn't have content" do
-    	comment=FactoryGirl.build(:no_content)
+    	comment.content=nil
 	  	expect(comment.save).to eq(false)
     end
     it "doesn't have user_id" do
-    	comment=FactoryGirl.build(:no_user_id)
+    	comment.user_id=nil
 	  	expect(comment.save).to eq(false)
     end
     it "doesn't have excahge_id" do
-    	comment=FactoryGirl.build(:no_exchange_id)
+    	comment.exchange_id=nil
 	  	expect(comment.save).to eq(false)
     end
     it{should belong_to :exchange}

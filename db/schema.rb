@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907080103) do
+ActiveRecord::Schema.define(version: 20150906191739) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20150907080103) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
   end
+
+  add_index "comments", ["exchange_id"], name: "index_comments_on_exchange_id"
 
   create_table "exchange_records", force: :cascade do |t|
     t.integer  "user_game_id"
@@ -83,17 +85,19 @@ ActiveRecord::Schema.define(version: 20150907080103) do
 
   create_table "rates", force: :cascade do |t|
     t.integer  "rate"
+    t.integer  "exchange_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "exchange_id"
   end
+
+  add_index "rates", ["exchange_id"], name: "index_rates_on_exchange_id"
 
   create_table "user_games", force: :cascade do |t|
     t.integer  "game_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "condition"
+    t.integer  "condition"
   end
 
   add_index "user_games", ["game_id"], name: "index_user_games_on_game_id"

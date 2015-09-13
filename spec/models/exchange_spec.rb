@@ -1,22 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe Exchange, type: :model do
+  let(:exchange) {FactoryGirl.build(:exchange)}
   context "testing exchange model" do
-  	it "it is ok" do
-  		exchange=FactoryGirl.build(:exchange)
+  	it "is ok" do
   		expect(exchange.save).to eq(true)
   	end	
-
-  	it "it doesn't have user1_id" do
-  		exchange=FactoryGirl.build(:no_user1_id)
+  	it "doesn't have user1_id" do
+      exchange.user1_id=nil
   		expect(exchange.save).to eq(false)
   	end
-  	it "it doesn't have user2_id" do
-  		exchange=FactoryGirl.build(:no_user2_id)
+  	it "doesn't have user2_id" do
+  		exchange.user2_id=nil
   		expect(exchange.save).to eq(false)
   	end
   	it "it doesn't have request status" do
-  		exchange=FactoryGirl.build(:no_request_state)
+  		exchange.request_state=nil
   		expect(exchange.save).to eq(false)
   	end
   	it{should have_many :comments}

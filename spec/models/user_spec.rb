@@ -1,30 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:user) {FactoryGirl.build(:user)}
   context 'testing User model' do
   	it 'User is ok' do
-  		user=FactoryGirl.build(:user)
   		expect(user.save).to eq(true)
   	end
   	it 'user has no name' do
-  		user=FactoryGirl.build(:no_name)
+      user.name=nil
   		expect(user.save).to eq(false)
   	end
   	it 'user has no lastname' do
-  		user=FactoryGirl.build(:no_lastname)
+  		user.lastname=nil
   		expect(user.save).to eq(false)
   	end
   	it 'user has no email' do
-  		user=FactoryGirl.build(:no_email)
+  		user.email=nil
   		expect(user.save).to eq(false)
   	end
   	it 'user has no password' do
-  		user=FactoryGirl.build(:no_password)
+  		user.password=nil
   		expect(user.save).to eq(false)
   	end
 
   	it 'user has an invalid email' do
-  		user=FactoryGirl.build(:invalid_email)
+  		user.email="blabla"
   		expect(user.save).to eq(false)	
   	end
 
@@ -38,7 +38,7 @@ RSpec.describe User, type: :model do
     it "prueba de union" do
       user=FactoryGirl.build(:halo_has_user)
       expect(user.save).to eq(true)
-      puts(user.name)
+      #puts(user.name)
     end
 
   end

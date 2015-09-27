@@ -6,5 +6,4 @@ class Game < ActiveRecord::Base
 	has_many :platforms, :through => :game_platforms
 	has_many :categories, :through => :categorizations
 	has_many :game_platforms
-
 end

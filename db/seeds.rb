@@ -8,4 +8,9 @@
 5.times do |i|
   User.create(name: "user"+"#{i}", lastname: "user"+"#{i}", email: "pruebaemail"+"#{i}"+"@email.com", password: "123456789", nickname: "us"+"#{i}")
   Game.create(name: "Game"+"#{i}", maker: "1111111111", launch_date:"111111")
+  Category.create(name: "category"+"#{i}")
+
+
 end
+Platform.create(platform: "XBOX", console: "Xbox one")
+Platform.create(platform: "PLAY STATION", console: "PS 4")

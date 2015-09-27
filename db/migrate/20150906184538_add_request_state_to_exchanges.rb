@@ -1,5 +1,5 @@
 class AddRequestStateToExchanges < ActiveRecord::Migration
   def change
-    add_column :exchanges, :request_state, :string
+    add_column :exchanges, :request_status, :string
   end
 end

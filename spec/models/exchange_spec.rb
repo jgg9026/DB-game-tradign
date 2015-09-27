@@ -15,7 +15,7 @@ RSpec.describe Exchange, type: :model do
   		expect(exchange.save).to eq(false)
   	end
   	it "it doesn't have request status" do
-  		exchange.request_state=nil
+  		exchange.request_status=nil
   		expect(exchange.save).to eq(false)
   	end
   	it{should have_many :comments}

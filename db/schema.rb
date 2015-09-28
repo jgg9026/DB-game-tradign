@@ -51,12 +51,15 @@ ActiveRecord::Schema.define(version: 20150906191739) do
   add_index "exchange_records", ["user_game_id"], name: "index_exchange_records_on_user_game_id"
 
   create_table "exchanges", force: :cascade do |t|
+    t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "user1_id"
     t.integer  "user2_id"
     t.string   "request_status"
   end
+
+  add_index "exchanges", ["user_id"], name: "index_exchanges_on_user_id"
 
   create_table "game_platforms", force: :cascade do |t|
     t.integer  "game_id"
@@ -107,10 +110,11 @@ ActiveRecord::Schema.define(version: 20150906191739) do
     t.string   "name"
     t.string   "lastname"
     t.string   "email"
-    t.string   "password"
+    t.string   "password_digest"
     t.string   "nickname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "token"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

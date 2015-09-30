@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
 	validates :email, :nickname, uniqueness: true
 	validates_length_of :password_digest, minimum: 8
   has_secure_password
-	has_many :games, through: :user_games
-	has_many :user_games
+	has_many :games, through: :user_games, dependent: :destroy
+	has_many :user_games, dependent: :destroy
   has_many :user1 , class_name: "Exchange", foreign_key: "user1_id"
   has_many :user2 , class_name: "Exchange", foreign_key: "user2_id"
   has_many :record , class_name: "ExchangeRecord", foreign_key: "user_id"
@@ -25,12 +25,15 @@ class User < ActiveRecord::Base
     user=User.where(email: email).first
     if user
       if(BCrypt::Password.new(user.password_digest) == password)
-        user.token
+        #user.token
+        user
       else
-        puts('que haces')
+        #puts('que haces')
+        false
       end
     else
-      puts("User doesn't exist")
+      #puts("User doesn't exist")
+      false
     end
   end
   def self.generate_new_token(id)

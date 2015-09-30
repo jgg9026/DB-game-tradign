@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   get 'user' => 'user#index', defaults: { format: :json } 
   post 'auth/login' => 'user#login', defaults: { format: :json } 
+  post 'user/sign_up' => 'user#sign_up', defaults: { format: :json } 
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

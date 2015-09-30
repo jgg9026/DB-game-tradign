@@ -18,4 +18,16 @@ class UserController < ApplicationController
       render json: "Envie parametros", status: 400
     end
   end
+  def sign_up
+    @new_user=User.new(user_params)
+    if(@new_user.save)
+      render :new_user, status: 201
+    else
+      render json: @new_user.errors, status: 409
+    end
+  end
+  private
+  def user_params
+    params.permit(:name, :lastname, :email, :password, :nickname)
+  end
 end

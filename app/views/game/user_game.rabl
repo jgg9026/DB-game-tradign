@@ -1,4 +1,4 @@
-object :@user_games
+object :@games
 attributes :name
 child(user_games: :condition) do
     attributes :condition

@@ -1,2 +1,2 @@
 object :@login
-attributes :name, :email, :nickname
+attributes :name, :token, :email, :nickname

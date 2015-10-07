@@ -6,8 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 5.times do |i|
-  User.create(name: "user"+"#{i}", lastname: "user"+"#{i}", email: "pruebaemail"+"#{i}"+"@email.com", password: "123456789", nickname: "us"+"#{i}")
-  Game.create(name: "Game"+"#{i}", maker: "1111111111", launch_date:"111111")
+  user=User.create(name: "user"+"#{i}", lastname: "user"+"#{i}", email: "pruebaemail"+"#{i}"+"@email.com", password: "123456789", nickname: "us"+"#{i}")
+  game=Game.create(name: "Game"+"#{i}", maker: "1111111111", launch_date:"111111")
+  user.user_games.create(game: game, condition: i)
   Category.create(name: "category"+"#{i}")
   
 

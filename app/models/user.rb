@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
       else
         #puts('que haces')
         false
-      end
+      end 
     else
       #puts("User doesn't exist")
       false
@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+  def self.validate_token(token)
+    user = User.where(token: token).first
+    user ? user : nil
   end
   private
   def set_token

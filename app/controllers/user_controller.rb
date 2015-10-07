@@ -1,6 +1,9 @@
 class UserController < ApplicationController
   respond_to :html, :json
   def index
+    render json: "welcome", status: 200
+  end
+  def show
     @users=User.all
     #respond_with(@users)
     render :user
